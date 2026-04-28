@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk 'NR>=1025 && NR<=1045' \"C:/Users/Serge/Documents/Vide Coding Projects/bajanet/BajaNet/bajanet_index.html\")",
+      "Bash(awk NR>=1045 && NR<=1250 *)",
+      "Bash(awk NR>=1250 && NR<=1446 *)",
+      "Bash(awk 'NR>=1287 && NR<=1446' \"C:/Users/Serge/Documents/Vide Coding Projects/bajanet/BajaNet/bajanet_index.html\")"
+    ]
+  }
+}
