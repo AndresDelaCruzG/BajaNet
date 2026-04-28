@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviso de Privacidad — BajaNet Comunicaciones</title>
+  <title>Aviso de Privacidad Integral — BajaNet Comunicaciones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -82,6 +82,12 @@
       margin-top: 1px;
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -99,6 +105,39 @@
     .back-btn:hover {
       background: rgba(249, 115, 22, 0.07);
       border-color: var(--orange);
+    }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-warm);
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      padding: 6px 10px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .lang-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .lang-btn:not(.active):hover {
+      background: var(--cream-card);
+      color: var(--ink);
     }
 
     /* ── MAIN ── */
@@ -132,15 +171,23 @@
       font-style: italic;
       font-weight: 300;
       color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .page-intro {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.8;
       margin-bottom: 48px;
       padding-bottom: 48px;
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── PRIVACY BOX ── */
-    .privacy-section {
-      margin-bottom: 36px;
-    }
+    .page-intro p { margin-bottom: 16px }
+    .page-intro p:last-child { margin-bottom: 0 }
+
+    /* ── PRIVACY SECTIONS ── */
+    .privacy-section { margin-bottom: 36px }
 
     .privacy-section h2 {
       font-size: 13px;
@@ -148,7 +195,17 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .privacy-section h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
     .privacy-section p {
@@ -158,8 +215,10 @@
       margin-bottom: 12px;
     }
 
+    .privacy-section p:last-child { margin-bottom: 0 }
+
     .privacy-section ul {
-      padding-left: 20px;
+      padding-left: 22px;
       margin-bottom: 12px;
     }
 
@@ -168,6 +227,25 @@
       color: var(--ink-soft);
       line-height: 1.8;
       margin-bottom: 6px;
+    }
+
+    .privacy-section a {
+      color: var(--orange);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .privacy-section a:hover { text-decoration: underline }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--cream-card);
+      border-left: 3px solid var(--border-warm);
+      border-radius: 0 6px 6px 0;
     }
 
     .divider {
@@ -200,6 +278,11 @@
     }
 
     .footer-copy a:hover { text-decoration: underline }
+
+    @media(max-width:600px) {
+      .header-right { gap: 8px }
+      .back-btn { padding: 7px 11px; font-size: 12px }
+    }
   </style>
 </head>
 
@@ -210,90 +293,361 @@
       <img class="logo-img" src="bajanet-logo.png" alt="BajaNet Comunicaciones logo">
       <div class="logo-text">BajaNet<small>Comunicaciones</small></div>
     </a>
-    <a class="back-btn" href="bajanet_index.html">
-      ← Regresar al inicio
-    </a>
+    <div class="header-right">
+      <a class="back-btn" href="bajanet_index.html">
+        <span data-i18n="back">← Regresar al inicio</span>
+      </a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <div class="page-eyebrow">Legal</div>
-    <h1 class="page-title">Aviso de Privacidad</h1>
-    <p class="page-date">BajaNet Comunicaciones — Última actualización: 2025 · Playas de Rosarito, Baja California, México</p>
+    <div class="page-eyebrow" data-i18n="eyebrow">Legal</div>
+    <h1 class="page-title" data-i18n="title">Aviso de Privacidad Integral</h1>
+    <p class="page-date" data-i18n="subtitle">BAJANET COMUNICACIONES S.A. de C.V. — Tijuana, Baja California, México</p>
 
+    <!-- INTRO -->
+    <div class="page-intro">
+      <p data-i18n="intro.p1">Este aviso de privacidad se refiere a la información personal que se recolecta sobre el individuo (denominado en adelante como el "Titular") por parte de la empresa BAJANET COMUNICACIONES S.A. de C.V. (en lo sucesivo, "BAJANET").</p>
+      <p data-i18n="intro.p2">En relación a este AVISO DE PRIVACIDAD, aquellos términos utilizados en el mismo que no cuenten con una definición específica se regirán por el significado que les otorga la normativa relacionada con la protección de datos personales.</p>
+      <p data-i18n="intro.p3">BAJANET es una compañía que se compromete a salvaguardar el derecho a la protección de la información personal de cualquier persona, conocido como el "derecho a la autodeterminación informativa". Este derecho se encuentra amparado y protegido como un derecho humano, según lo estipulado en el segundo párrafo del artículo 16 de la Constitución Política de los Estados Unidos Mexicanos, así como en la legislación relacionada con la protección de datos personales.</p>
+      <p data-i18n="intro.p4">BAJANET se compromete de manera específica y, sin que esto implique limitaciones, a lo siguiente: (i) Utilizar sus datos personales exclusivamente con el propósito establecido en este AVISO DE PRIVACIDAD. (ii) Garantizar que sus datos personales se manejan con total confidencialidad y en estricto cumplimiento del secreto profesional. (iii) Cumplir con los principios de protección, incluyendo licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad, de acuerdo con lo estipulado en la legislación sobre protección de datos personales. Además, BAJANET tomará las medidas necesarias para su implementación. (iv) Establecer y mantener medidas de seguridad administrativas, técnicas y físicas que resguarden sus datos de posibles daños, pérdida, alteración, destrucción o de cualquier acceso, uso o tratamiento no autorizado.</p>
+      <p data-i18n="intro.p5">En los casos en los que el tratamiento de sus datos personales esté contemplado en alguna de las circunstancias establecidas en el artículo 10 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, no será requerido su consentimiento previo.</p>
+    </div>
+
+    <!-- I -->
     <div class="privacy-section">
-      <h2>Identidad y Domicilio del Responsable</h2>
-      <p>BajaNet Comunicaciones, con domicilio en CP 22710, Playas de Rosarito, Baja California, México, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+      <h2 data-i18n="s1.h2">I. Responsable y Domicilio</h2>
+      <p data-i18n="s1.p1">BAJANET COMUNICACIONES S.A. de C.V. es el responsable del tratamiento de datos personales en términos de este AVISO DE PRIVACIDAD, con domicilio en Ladera #7-2 Monte de San Antonio 22616 en Tijuana, Baja California, México.</p>
+      <p data-i18n-html="s1.p2">Usted podrá contactar a nuestro departamento de "Protección de Datos" a través de la siguiente cuenta de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a></p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- II -->
     <div class="privacy-section">
-      <h2>Datos Personales Recabados</h2>
-      <p>Para proveer nuestros servicios de telecomunicaciones e internet, podemos recabar los siguientes datos:</p>
+      <h2 data-i18n="s2.h2">II. Datos Personales Objeto de Tratamiento</h2>
+      <p data-i18n="s2.p1">Dependiendo de las finalidades para las que Usted nos otorgue sus datos personales, le solicitaremos las siguientes categorías de datos. En función de su rol, los datos personales que se recolectan pueden incluir:</p>
       <ul>
-        <li>Nombre completo y datos de identificación</li>
-        <li>Domicilio de instalación del servicio</li>
-        <li>Número de teléfono y correo electrónico</li>
-        <li>Datos de facturación (RFC, razón social para clientes empresariales)</li>
-        <li>Información técnica del equipo instalado</li>
+        <li data-i18n-html="s2.li1"><strong>Si usted es Cliente:</strong> Datos de identificación, datos de contacto, datos laborales, datos patrimoniales y datos demográficos.</li>
+        <li data-i18n-html="s2.li2"><strong>Si usted es Prospecto de Cliente:</strong> Datos de identificación, datos de contacto, datos laborales y datos demográficos.</li>
+        <li data-i18n-html="s2.li3"><strong>Si usted es Proveedor:</strong> Datos de identificación, datos de contacto, datos laborales, datos patrimoniales y datos relacionados con terceros.</li>
+      </ul>
+      <p data-i18n="s2.p2">Es importante destacar que no en todos los casos se recopila toda la información mencionada anteriormente, ya que la cantidad de datos puede variar dependiendo de la disponibilidad por parte del Titular o de la necesidad para la prestación del servicio.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- III -->
+    <div class="privacy-section">
+      <h2 data-i18n="s3.h2">III. Finalidades del Tratamiento</h2>
+      <p data-i18n="s3.p1">En cuanto a las finalidades del tratamiento de los datos personales, se llevan a cabo para los siguientes propósitos:</p>
+
+      <h3 data-i18n="s3.ha">A. Finalidades Primarias</h3>
+
+      <h3 data-i18n="s3.ha1">a) Para Clientes y Prospectos de Clientes</h3>
+      <ul>
+        <li data-i18n="s3.a1.li1">Suministrar los servicios y productos que han sido solicitados.</li>
+        <li data-i18n="s3.a1.li2">Enviar facturas y confirmar los pagos.</li>
+        <li data-i18n="s3.a1.li3">Remitir comunicaciones periódicas a los clientes relacionadas con el servicio.</li>
+        <li data-i18n="s3.a1.li4">Realizar prospección comercial (en caso de ser un prospecto de cliente).</li>
+        <li data-i18n="s3.a1.li5">Transmitir comunicaciones de servicio obligatorias, como cartas de bienvenida, recordatorios de pago, información sobre cuestiones de servicio técnico, comercial y anuncios de seguridad.</li>
+        <li data-i18n="s3.a1.li6">Contactar para ofrecer servicios o productos adicionales, así como recordatorios de pago, información sobre asuntos de servicio técnico, comercial y anuncios de seguridad.</li>
+        <li data-i18n="s3.a1.li7">Responder a consultas pendientes de solución que hayan sido solicitadas previamente en nuestro sistema de consultoría.</li>
+      </ul>
+
+      <h3 data-i18n="s3.hb1">b) Para Proveedores</h3>
+      <ul>
+        <li data-i18n="s3.b1.li1">Confirmar pagos.</li>
+        <li data-i18n="s3.b1.li2">Establecer la relación comercial.</li>
+      </ul>
+
+      <h3 data-i18n="s3.hc1">c) Para Asistencia a Eventos</h3>
+      <p data-i18n="s3.c1.p1">Si asiste a cursos, seminarios, talleres, diplomados u otros eventos, sus datos serán tratados para las siguientes finalidades:</p>
+      <ul>
+        <li data-i18n="s3.c1.li1">Contactar para ofrecer eventos adicionales.</li>
+        <li data-i18n="s3.c1.li2">Grabación de videos.</li>
+        <li data-i18n="s3.c1.li3">Captura de fotografías en las diferentes instalaciones.</li>
+        <li data-i18n="s3.c1.li4">Transmisión en vivo, simultánea o no, en otras salas, a través de redes sociales, Internet u otros medios digitales o electrónicos.</li>
+      </ul>
+
+      <h3 data-i18n="s3.hb">B. Finalidades Secundarias</h3>
+
+      <h3 data-i18n="s3.hb2">a) Para Clientes y Prospectos de Clientes</h3>
+      <ul>
+        <li data-i18n="s3.b2.li1">Evaluar la calidad de los productos y servicios, así como llevar a cabo encuestas de satisfacción.</li>
+        <li data-i18n="s3.b2.li2">Mostrar contenido y anuncios publicitarios personalizados según sus intereses y preferencias.</li>
+        <li data-i18n="s3.b2.li3">Enviar encuestas de productos o correos promocionales para informar sobre otros productos o servicios disponibles de BAJANET, sus filiales y subsidiarias.</li>
       </ul>
     </div>
 
     <div class="divider"></div>
 
+    <!-- IV -->
     <div class="privacy-section">
-      <h2>Finalidades del Tratamiento</h2>
-      <p>Sus datos serán utilizados para:</p>
+      <h2 data-i18n="s4.h2">IV. Temporalidad del Tratamiento</h2>
+      <p data-i18n="s4.p1">Sus datos personales serán tratados solamente durante el tiempo necesario para cumplir con los propósitos establecidos en este AVISO DE PRIVACIDAD y/o de acuerdo con lo establecido en la legislación sobre protección de datos personales.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- V -->
+    <div class="privacy-section">
+      <h2 data-i18n="s5.h2">V. Transferencia de Datos Personales</h2>
+      <p data-i18n="s5.p1">BAJANET le informa que sus datos personales pueden ser transferidos, en ciertas situaciones, tanto dentro como fuera del país, a empresas filiales, controladoras o subsidiarias que formen parte de BAJANET. De acuerdo con lo establecido en la fracción III del artículo 37 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, dicha transferencia no requerirá su consentimiento. En cualquier caso, el receptor de sus datos personales tratará esta información de acuerdo con lo establecido en este AVISO DE PRIVACIDAD y en cumplimiento de la legislación sobre protección de datos personales.</p>
+      <p data-i18n="s5.p2">Es importante destacar que esta sección no implica que BAJANET realice transferencias relacionadas con datos sensibles.</p>
+      <p data-i18n-html="s5.p3">Si no está de acuerdo con las finalidades secundarias y/o la transferencia de datos, le invitamos a enviar un correo a la dirección <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>. Hasta que no recibamos un correo manifestando su desacuerdo con las finalidades secundarias y/o la transferencia de sus datos personales, entenderemos que está de acuerdo con ellas.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VI -->
+    <div class="privacy-section">
+      <h2 data-i18n="s6.h2">VI. Derechos ARCO</h2>
+      <p data-i18n-html="s6.p1">Como titular de datos personales, tiene el derecho de ejercer los Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición) para el tratamiento de sus datos personales. Para hacerlo, puede enviar su solicitud directamente al departamento de "Protección de Datos" a través de la dirección de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a></p>
+      <p data-i18n="s6.p2">Su solicitud deberá incluir, al menos, la siguiente información:</p>
       <ul>
-        <li>Proveer, facturar y dar soporte a los servicios de internet y telecomunicaciones contratados</li>
-        <li>Enviar notificaciones técnicas y administrativas relacionadas con su servicio</li>
-        <li>Cumplir con obligaciones legales y regulatorias aplicables</li>
-        <li>Contactarle en caso de incidencias o mantenimiento programado</li>
+        <li data-i18n="s6.li1">(a) Su nombre y dirección, o cualquier otro medio para comunicarle la respuesta a su solicitud.</li>
+        <li data-i18n="s6.li2">(b) Documentos que confirmen su identidad o, en su caso, la representación legal.</li>
+        <li data-i18n="s6.li3">(c) Una descripción clara y precisa de los datos personales sobre los cuales desea ejercer alguno de los Derechos ARCO.</li>
+        <li data-i18n="s6.li4">(d) Cualquier otro detalle que facilite la ubicación de los datos personales.</li>
+        <li data-i18n="s6.li5">(e) Su firma al final de la solicitud.</li>
       </ul>
+      <p data-i18n-html="s6.p3">Una vez presentada la solicitud, el departamento de "Protección de Datos" responderá en un plazo máximo de <strong>20 días hábiles</strong> a partir de la fecha de recepción. Si se requiere información adicional y/o documentación, se pondrá en contacto con usted en un plazo de <strong>5 días hábiles</strong>; usted tendrá <strong>10 días hábiles</strong> para atender ese requerimiento. De lo contrario, su solicitud se considerará como no presentada.</p>
+      <p data-i18n-html="s6.p4">Dentro de los próximos <strong>15 días hábiles</strong> posteriores a la respuesta, en caso de que su solicitud sea procedente, se llevará a cabo.</p>
+      <p data-i18n="s6.p5">Si su solicitud se relaciona con el ejercicio del derecho de acceso, sus datos personales estarán disponibles a través de copias simples y/o documentos electrónicos. El ejercicio de los Derechos ARCO no tendrá costo, y lo mismo se aplicará a la reproducción en copia simple o al envío por correo electrónico.</p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- VII -->
     <div class="privacy-section">
-      <h2>Transferencia de Datos</h2>
-      <p>BajaNet Comunicaciones no comparte, vende ni transfiere sus datos personales a terceros no relacionados con la prestación del servicio, salvo cuando sea requerido por autoridad competente conforme a la ley.</p>
+      <h2 data-i18n="s7.h2">VII. Revocación del Consentimiento</h2>
+      <p data-i18n="s7.p1">Usted, como titular, tiene el derecho de revocar su consentimiento para el tratamiento de sus datos personales siguiendo el procedimiento anteriormente descrito, expresando de manera explícita su deseo de revocar el consentimiento. Sin embargo, es importante tener en cuenta que en todos los casos, puede que no podamos atender su solicitud o concluir el uso de sus datos de manera inmediata debido a posibles obligaciones legales que requieran seguir tratando sus datos personales. Además, la revocación de su consentimiento en ciertas situaciones podría implicar la terminación de su relación con nosotros.</p>
+      <p data-i18n="s7.p2">Para obtener más información sobre la protección de sus datos personales, puede ponerse en contacto con nuestro departamento de "Protección de Datos" utilizando los medios de contacto indicados en este AVISO DE PRIVACIDAD. La revocación del consentimiento no generará costos.</p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- VIII -->
     <div class="privacy-section">
-      <h2>Derechos ARCO</h2>
-      <p>Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales (derechos ARCO). Para ejercerlos, contáctenos vía WhatsApp al <strong>+52 664 507 4600</strong> o diríjase a nuestras oficinas en CP 22710, Playas de Rosarito, B.C.</p>
+      <h2 data-i18n="s8.h2">VIII. Uso o Divulgación de Datos Personales</h2>
+      <p data-i18n="s8.p1">BAJANET utilizará sus datos personales de acuerdo con las finalidades establecidas en este AVISO DE PRIVACIDAD y por el tiempo necesario según las disposiciones legales aplicables. En todo momento, puede ponerse en contacto con nosotros a través de los medios mencionados para obtener aclaraciones, resolver dudas o presentar sugerencias relacionadas con sus datos personales.</p>
+      <p data-i18n-html="s8.p2">Si desea dejar de recibir información o comunicados (limitar el uso o divulgación) por parte nuestra, puede comunicarse a la siguiente dirección de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a></p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- IX -->
     <div class="privacy-section">
-      <h2>Cambios al Aviso de Privacidad</h2>
-      <p>Cualquier modificación a este aviso será notificada a través de nuestro sitio web. Le recomendamos revisarlo periódicamente.</p>
+      <h2 data-i18n="s9.h2">IX. Cookies y Balizas Web</h2>
+      <p data-i18n="s9.p1">BAJANET emplea cookies en su sitio web. Las cookies son archivos de texto que se almacenan en el disco duro de su computadora cuando visita algunos sitios web. Se utilizan para identificar si ha visitado previamente el sitio web y para ayudarnos a identificar aplicaciones del sitio web que pueden ser de su interés.</p>
+      <p data-i18n="s9.p2">La mayoría de los navegadores están configurados para aceptar cookies, y las opciones de ayuda en la barra de herramientas de la mayoría de los navegadores le indicarán cómo dejar de aceptar nuevas cookies, recibir notificaciones sobre cookies nuevas y desactivar las cookies existentes. Usted puede desactivar el uso de estos mecanismos siguiendo las instrucciones proporcionadas por el propietario de su navegador.</p>
+      <p data-i18n="s9.p3">Nuestro sitio web puede incluir enlaces a sitios web de terceros, y al acceder a estos sitios, usted abandona nuestro sitio web, por lo que no asumimos ninguna responsabilidad con respecto a esos sitios web de terceros. Además, los enlaces a sitios de redes sociales en nuestro sitio web implican que al proporcionar información o datos en dichos sitios, estos pueden ser vistos, accedidos y tratados por otras personas.</p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- X -->
     <div class="privacy-section">
-      <h2>Contacto</h2>
-      <p>Para cualquier duda relacionada con este aviso de privacidad, contáctenos:</p>
-      <ul>
-        <li>WhatsApp: <a href="https://wa.me/526645074600" style="color:var(--orange);font-weight:600">+52 664 507 4600</a></li>
-        <li>Teléfono EE.UU.: <a href="tel:+16612345593" style="color:var(--orange);font-weight:600">+1 661 234 5593</a></li>
-        <li>Domicilio: CP 22710, Playas de Rosarito, Baja California, México</li>
-      </ul>
+      <h2 data-i18n="s10.h2">X. Cambios al Presente Aviso de Privacidad</h2>
+      <p data-i18n-html="s10.p1">Cualquier cambio o actualización en el presente AVISO DE PRIVACIDAD se le comunicará a través de nuestro portal principal: <a href="https://www.bajanet.mx" target="_blank">www.bajanet.mx</a>. Si está consultando una versión impresa, le recomendamos revisar el Aviso de Privacidad en nuestro portal principal.</p>
+      <p data-i18n="s10.p2">Al proporcionarnos sus datos personales por cualquier medio, usted, como titular, reconoce y acepta expresamente el presente AVISO DE PRIVACIDAD. Este consentimiento nos otorga la facultad de tratar sus datos de acuerdo con lo establecido en el AVISO DE PRIVACIDAD y en cumplimiento de la legislación sobre protección de datos personales, sin perjuicio de los derechos otorgados por la misma. Si cree que su derecho a la protección de sus datos personales ha sido vulnerado por nuestra conducta u omisión, puede contactarnos a través de los medios proporcionados.</p>
+      <div class="note" data-i18n="s10.note">* Es importante destacar que BAJANET no tiene vínculos con las políticas internas y de datos personales de la aplicación WhatsApp.</div>
     </div>
+
   </main>
 
   <footer>
-    <div class="footer-copy">
-      © 2025 BajaNet Comunicaciones · Todos los derechos reservados
-    </div>
-    <div class="footer-copy">
-      <a href="bajanet_index.html">← Regresar al inicio</a>
-    </div>
+    <div class="footer-copy" data-i18n="footer.copy">© 2025 BajaNet Comunicaciones · Todos los derechos reservados</div>
+    <div class="footer-copy"><a href="bajanet_index.html" data-i18n="footer.back">← Regresar al inicio</a></div>
   </footer>
+
+  <script>
+    const t = {
+      es: {
+        'back': '← Regresar al inicio',
+        'eyebrow': 'Legal',
+        'title': 'Aviso de Privacidad Integral',
+        'subtitle': 'BAJANET COMUNICACIONES S.A. de C.V. — Tijuana, Baja California, México',
+        'intro.p1': 'Este aviso de privacidad se refiere a la información personal que se recolecta sobre el individuo (denominado en adelante como el "Titular") por parte de la empresa BAJANET COMUNICACIONES S.A. de C.V. (en lo sucesivo, "BAJANET").',
+        'intro.p2': 'En relación a este AVISO DE PRIVACIDAD, aquellos términos utilizados en el mismo que no cuenten con una definición específica se regirán por el significado que les otorga la normativa relacionada con la protección de datos personales.',
+        'intro.p3': 'BAJANET es una compañía que se compromete a salvaguardar el derecho a la protección de la información personal de cualquier persona, conocido como el "derecho a la autodeterminación informativa". Este derecho se encuentra amparado y protegido como un derecho humano, según lo estipulado en el segundo párrafo del artículo 16 de la Constitución Política de los Estados Unidos Mexicanos, así como en la legislación relacionada con la protección de datos personales.',
+        'intro.p4': 'BAJANET se compromete de manera específica y, sin que esto implique limitaciones, a lo siguiente: (i) Utilizar sus datos personales exclusivamente con el propósito establecido en este AVISO DE PRIVACIDAD. (ii) Garantizar que sus datos personales se manejan con total confidencialidad y en estricto cumplimiento del secreto profesional. (iii) Cumplir con los principios de protección, incluyendo licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad, de acuerdo con lo estipulado en la legislación sobre protección de datos personales. Además, BAJANET tomará las medidas necesarias para su implementación. (iv) Establecer y mantener medidas de seguridad administrativas, técnicas y físicas que resguarden sus datos de posibles daños, pérdida, alteración, destrucción o de cualquier acceso, uso o tratamiento no autorizado.',
+        'intro.p5': 'En los casos en los que el tratamiento de sus datos personales esté contemplado en alguna de las circunstancias establecidas en el artículo 10 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, no será requerido su consentimiento previo.',
+        's1.h2': 'I. Responsable y Domicilio',
+        's1.p1': 'BAJANET COMUNICACIONES S.A. de C.V. es el responsable del tratamiento de datos personales en términos de este AVISO DE PRIVACIDAD, con domicilio en Ladera #7-2 Monte de San Antonio 22616 en Tijuana, Baja California, México.',
+        's1.p2': 'Usted podrá contactar a nuestro departamento de "Protección de Datos" a través de la siguiente cuenta de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's2.h2': 'II. Datos Personales Objeto de Tratamiento',
+        's2.p1': 'Dependiendo de las finalidades para las que Usted nos otorgue sus datos personales, le solicitaremos las siguientes categorías de datos. En función de su rol, los datos personales que se recolectan pueden incluir:',
+        's2.li1': '<strong>Si usted es Cliente:</strong> Datos de identificación, datos de contacto, datos laborales, datos patrimoniales y datos demográficos.',
+        's2.li2': '<strong>Si usted es Prospecto de Cliente:</strong> Datos de identificación, datos de contacto, datos laborales y datos demográficos.',
+        's2.li3': '<strong>Si usted es Proveedor:</strong> Datos de identificación, datos de contacto, datos laborales, datos patrimoniales y datos relacionados con terceros.',
+        's2.p2': 'Es importante destacar que no en todos los casos se recopila toda la información mencionada anteriormente, ya que la cantidad de datos puede variar dependiendo de la disponibilidad por parte del Titular o de la necesidad para la prestación del servicio.',
+        's3.h2': 'III. Finalidades del Tratamiento',
+        's3.p1': 'En cuanto a las finalidades del tratamiento de los datos personales, se llevan a cabo para los siguientes propósitos:',
+        's3.ha': 'A. Finalidades Primarias',
+        's3.ha1': 'a) Para Clientes y Prospectos de Clientes',
+        's3.a1.li1': 'Suministrar los servicios y productos que han sido solicitados.',
+        's3.a1.li2': 'Enviar facturas y confirmar los pagos.',
+        's3.a1.li3': 'Remitir comunicaciones periódicas a los clientes relacionadas con el servicio.',
+        's3.a1.li4': 'Realizar prospección comercial (en caso de ser un prospecto de cliente).',
+        's3.a1.li5': 'Transmitir comunicaciones de servicio obligatorias, como cartas de bienvenida, recordatorios de pago, información sobre cuestiones de servicio técnico, comercial y anuncios de seguridad.',
+        's3.a1.li6': 'Contactar para ofrecer servicios o productos adicionales, así como recordatorios de pago, información sobre asuntos de servicio técnico, comercial y anuncios de seguridad.',
+        's3.a1.li7': 'Responder a consultas pendientes de solución que hayan sido solicitadas previamente en nuestro sistema de consultoría.',
+        's3.hb1': 'b) Para Proveedores',
+        's3.b1.li1': 'Confirmar pagos.',
+        's3.b1.li2': 'Establecer la relación comercial.',
+        's3.hc1': 'c) Para Asistencia a Eventos',
+        's3.c1.p1': 'Si asiste a cursos, seminarios, talleres, diplomados u otros eventos, sus datos serán tratados para las siguientes finalidades:',
+        's3.c1.li1': 'Contactar para ofrecer eventos adicionales.',
+        's3.c1.li2': 'Grabación de videos.',
+        's3.c1.li3': 'Captura de fotografías en las diferentes instalaciones.',
+        's3.c1.li4': 'Transmisión en vivo, simultánea o no, en otras salas, a través de redes sociales, Internet u otros medios digitales o electrónicos.',
+        's3.hb': 'B. Finalidades Secundarias',
+        's3.hb2': 'a) Para Clientes y Prospectos de Clientes',
+        's3.b2.li1': 'Evaluar la calidad de los productos y servicios, así como llevar a cabo encuestas de satisfacción.',
+        's3.b2.li2': 'Mostrar contenido y anuncios publicitarios personalizados según sus intereses y preferencias.',
+        's3.b2.li3': 'Enviar encuestas de productos o correos promocionales para informar sobre otros productos o servicios disponibles de BAJANET, sus filiales y subsidiarias.',
+        's4.h2': 'IV. Temporalidad del Tratamiento',
+        's4.p1': 'Sus datos personales serán tratados solamente durante el tiempo necesario para cumplir con los propósitos establecidos en este AVISO DE PRIVACIDAD y/o de acuerdo con lo establecido en la legislación sobre protección de datos personales.',
+        's5.h2': 'V. Transferencia de Datos Personales',
+        's5.p1': 'BAJANET le informa que sus datos personales pueden ser transferidos, en ciertas situaciones, tanto dentro como fuera del país, a empresas filiales, controladoras o subsidiarias que formen parte de BAJANET. De acuerdo con lo establecido en la fracción III del artículo 37 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, dicha transferencia no requerirá su consentimiento. En cualquier caso, el receptor de sus datos personales tratará esta información de acuerdo con lo establecido en este AVISO DE PRIVACIDAD y en cumplimiento de la legislación sobre protección de datos personales.',
+        's5.p2': 'Es importante destacar que esta sección no implica que BAJANET realice transferencias relacionadas con datos sensibles.',
+        's5.p3': 'Si no está de acuerdo con las finalidades secundarias y/o la transferencia de datos, le invitamos a enviar un correo a la dirección <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>. Hasta que no recibamos un correo manifestando su desacuerdo con las finalidades secundarias y/o la transferencia de sus datos personales, entenderemos que está de acuerdo con ellas.',
+        's6.h2': 'VI. Derechos ARCO',
+        's6.p1': 'Como titular de datos personales, tiene el derecho de ejercer los Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición) para el tratamiento de sus datos personales. Para hacerlo, puede enviar su solicitud directamente al departamento de "Protección de Datos" a través de la dirección de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's6.p2': 'Su solicitud deberá incluir, al menos, la siguiente información:',
+        's6.li1': '(a) Su nombre y dirección, o cualquier otro medio para comunicarle la respuesta a su solicitud.',
+        's6.li2': '(b) Documentos que confirmen su identidad o, en su caso, la representación legal.',
+        's6.li3': '(c) Una descripción clara y precisa de los datos personales sobre los cuales desea ejercer alguno de los Derechos ARCO.',
+        's6.li4': '(d) Cualquier otro detalle que facilite la ubicación de los datos personales.',
+        's6.li5': '(e) Su firma al final de la solicitud.',
+        's6.p3': 'Una vez presentada la solicitud, el departamento de "Protección de Datos" responderá en un plazo máximo de <strong>20 días hábiles</strong> a partir de la fecha de recepción. Si se requiere información adicional y/o documentación, se pondrá en contacto con usted en un plazo de <strong>5 días hábiles</strong>; usted tendrá <strong>10 días hábiles</strong> para atender ese requerimiento. De lo contrario, su solicitud se considerará como no presentada.',
+        's6.p4': 'Dentro de los próximos <strong>15 días hábiles</strong> posteriores a la respuesta, en caso de que su solicitud sea procedente, se llevará a cabo.',
+        's6.p5': 'Si su solicitud se relaciona con el ejercicio del derecho de acceso, sus datos personales estarán disponibles a través de copias simples y/o documentos electrónicos. El ejercicio de los Derechos ARCO no tendrá costo, y lo mismo se aplicará a la reproducción en copia simple o al envío por correo electrónico.',
+        's7.h2': 'VII. Revocación del Consentimiento',
+        's7.p1': 'Usted, como titular, tiene el derecho de revocar su consentimiento para el tratamiento de sus datos personales siguiendo el procedimiento anteriormente descrito, expresando de manera explícita su deseo de revocar el consentimiento. Sin embargo, es importante tener en cuenta que en todos los casos, puede que no podamos atender su solicitud o concluir el uso de sus datos de manera inmediata debido a posibles obligaciones legales que requieran seguir tratando sus datos personales. Además, la revocación de su consentimiento en ciertas situaciones podría implicar la terminación de su relación con nosotros.',
+        's7.p2': 'Para obtener más información sobre la protección de sus datos personales, puede ponerse en contacto con nuestro departamento de "Protección de Datos" utilizando los medios de contacto indicados en este AVISO DE PRIVACIDAD. La revocación del consentimiento no generará costos.',
+        's8.h2': 'VIII. Uso o Divulgación de Datos Personales',
+        's8.p1': 'BAJANET utilizará sus datos personales de acuerdo con las finalidades establecidas en este AVISO DE PRIVACIDAD y por el tiempo necesario según las disposiciones legales aplicables. En todo momento, puede ponerse en contacto con nosotros a través de los medios mencionados para obtener aclaraciones, resolver dudas o presentar sugerencias relacionadas con sus datos personales.',
+        's8.p2': 'Si desea dejar de recibir información o comunicados (limitar el uso o divulgación) por parte nuestra, puede comunicarse a la siguiente dirección de correo electrónico: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's9.h2': 'IX. Cookies y Balizas Web',
+        's9.p1': 'BAJANET emplea cookies en su sitio web. Las cookies son archivos de texto que se almacenan en el disco duro de su computadora cuando visita algunos sitios web. Se utilizan para identificar si ha visitado previamente el sitio web y para ayudarnos a identificar aplicaciones del sitio web que pueden ser de su interés.',
+        's9.p2': 'La mayoría de los navegadores están configurados para aceptar cookies, y las opciones de ayuda en la barra de herramientas de la mayoría de los navegadores le indicarán cómo dejar de aceptar nuevas cookies, recibir notificaciones sobre cookies nuevas y desactivar las cookies existentes. Usted puede desactivar el uso de estos mecanismos siguiendo las instrucciones proporcionadas por el propietario de su navegador.',
+        's9.p3': 'Nuestro sitio web puede incluir enlaces a sitios web de terceros, y al acceder a estos sitios, usted abandona nuestro sitio web, por lo que no asumimos ninguna responsabilidad con respecto a esos sitios web de terceros. Además, los enlaces a sitios de redes sociales en nuestro sitio web implican que al proporcionar información o datos en dichos sitios, estos pueden ser vistos, accedidos y tratados por otras personas.',
+        's10.h2': 'X. Cambios al Presente Aviso de Privacidad',
+        's10.p1': 'Cualquier cambio o actualización en el presente AVISO DE PRIVACIDAD se le comunicará a través de nuestro portal principal: <a href="https://www.bajanet.mx" target="_blank">www.bajanet.mx</a>. Si está consultando una versión impresa, le recomendamos revisar el Aviso de Privacidad en nuestro portal principal.',
+        's10.p2': 'Al proporcionarnos sus datos personales por cualquier medio, usted, como titular, reconoce y acepta expresamente el presente AVISO DE PRIVACIDAD. Este consentimiento nos otorga la facultad de tratar sus datos de acuerdo con lo establecido en el AVISO DE PRIVACIDAD y en cumplimiento de la legislación sobre protección de datos personales, sin perjuicio de los derechos otorgados por la misma. Si cree que su derecho a la protección de sus datos personales ha sido vulnerado por nuestra conducta u omisión, puede contactarnos a través de los medios proporcionados.',
+        's10.note': '* Es importante destacar que BAJANET no tiene vínculos con las políticas internas y de datos personales de la aplicación WhatsApp.',
+        'footer.copy': '© 2025 BajaNet Comunicaciones · Todos los derechos reservados',
+        'footer.back': '← Regresar al inicio',
+      },
+      en: {
+        'back': '← Back to home',
+        'eyebrow': 'Legal',
+        'title': 'Comprehensive Privacy Notice',
+        'subtitle': 'BAJANET COMUNICACIONES S.A. de C.V. — Tijuana, Baja California, Mexico',
+        'intro.p1': 'This privacy notice refers to the personal information collected about the individual (hereinafter referred to as the "Data Subject") by the company BAJANET COMUNICACIONES S.A. de C.V. (hereinafter, "BAJANET").',
+        'intro.p2': 'Regarding this PRIVACY NOTICE, any terms used herein that do not have a specific definition shall be governed by the meaning granted by the regulations related to the protection of personal data.',
+        'intro.p3': 'BAJANET is a company committed to safeguarding the right to the protection of personal information of any individual, known as the "right to informational self-determination." This right is recognized and protected as a human right, as stipulated in the second paragraph of Article 16 of the Political Constitution of the United Mexican States, as well as in legislation related to the protection of personal data.',
+        'intro.p4': 'BAJANET specifically commits, without limitation, to the following: (i) Use your personal data exclusively for the purposes set forth in this PRIVACY NOTICE. (ii) Ensure that your personal data is handled with full confidentiality and in strict compliance with professional secrecy. (iii) Comply with the protection principles, including lawfulness, consent, information, quality, purpose, loyalty, proportionality and accountability, in accordance with personal data protection legislation. BAJANET will take the necessary measures for their implementation. (iv) Establish and maintain administrative, technical and physical security measures to protect your data from damage, loss, alteration, destruction, or unauthorized access, use or processing.',
+        'intro.p5': 'In cases where the processing of your personal data is contemplated under any of the circumstances established in Article 10 of the Federal Law on Protection of Personal Data Held by Private Parties, your prior consent will not be required.',
+        's1.h2': 'I. Data Controller and Address',
+        's1.p1': 'BAJANET COMUNICACIONES S.A. de C.V. is responsible for the processing of personal data under this PRIVACY NOTICE, with registered address at Ladera #7-2 Monte de San Antonio 22616, Tijuana, Baja California, Mexico.',
+        's1.p2': 'You may contact our "Data Protection" department through the following email address: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's2.h2': 'II. Personal Data Subject to Processing',
+        's2.p1': 'Depending on the purposes for which you provide us with your personal data, we will request the following categories of data. Depending on your role, the personal data collected may include:',
+        's2.li1': '<strong>If you are a Customer:</strong> Identification data, contact data, employment data, financial data and demographic data.',
+        's2.li2': '<strong>If you are a Prospective Customer:</strong> Identification data, contact data, employment data and demographic data.',
+        's2.li3': '<strong>If you are a Supplier:</strong> Identification data, contact data, employment data, financial data and third-party related data.',
+        's2.p2': 'It is important to note that not all of the above information is collected in every case, as the amount of data may vary depending on the availability from the Data Subject or the necessity for service provision.',
+        's3.h2': 'III. Processing Purposes',
+        's3.p1': 'The processing of personal data is carried out for the following purposes:',
+        's3.ha': 'A. Primary Purposes',
+        's3.ha1': 'a) For Customers and Prospective Customers',
+        's3.a1.li1': 'Providing the services and products that have been requested.',
+        's3.a1.li2': 'Sending invoices and confirming payments.',
+        's3.a1.li3': 'Sending periodic communications to customers related to the service.',
+        's3.a1.li4': 'Conducting commercial prospecting (in the case of a prospective customer).',
+        's3.a1.li5': 'Sending mandatory service communications, such as welcome letters, payment reminders, information on technical and commercial service issues, and security announcements.',
+        's3.a1.li6': 'Contacting to offer additional services or products, as well as payment reminders, information on technical and commercial service matters and security announcements.',
+        's3.a1.li7': 'Responding to pending inquiries previously submitted through our consulting system.',
+        's3.hb1': 'b) For Suppliers',
+        's3.b1.li1': 'Confirming payments.',
+        's3.b1.li2': 'Establishing the commercial relationship.',
+        's3.hc1': 'c) For Event Attendance',
+        's3.c1.p1': 'If you attend courses, seminars, workshops, diploma programs or other events, your data will be processed for the following purposes:',
+        's3.c1.li1': 'Contacting to offer additional events.',
+        's3.c1.li2': 'Video recording.',
+        's3.c1.li3': 'Photography capture at the various facilities.',
+        's3.c1.li4': 'Live or delayed broadcasting in other rooms, through social media, the Internet or other digital or electronic media.',
+        's3.hb': 'B. Secondary Purposes',
+        's3.hb2': 'a) For Customers and Prospective Customers',
+        's3.b2.li1': 'Evaluating the quality of products and services, as well as conducting satisfaction surveys.',
+        's3.b2.li2': 'Displaying personalized content and advertising based on your interests and preferences.',
+        's3.b2.li3': 'Sending product surveys or promotional emails to inform about other products or services available from BAJANET, its affiliates and subsidiaries.',
+        's4.h2': 'IV. Data Retention Period',
+        's4.p1': 'Your personal data will be processed only for the time necessary to fulfill the purposes set forth in this PRIVACY NOTICE and/or in accordance with the provisions established in personal data protection legislation.',
+        's5.h2': 'V. Transfer of Personal Data',
+        's5.p1': 'BAJANET informs you that your personal data may be transferred, in certain situations, both within and outside the country, to affiliated, parent or subsidiary companies that are part of BAJANET. In accordance with Section III of Article 37 of the Federal Law on Protection of Personal Data Held by Private Parties, such transfer will not require your consent. In any case, the recipient of your personal data will process this information in accordance with the provisions of this PRIVACY NOTICE and in compliance with personal data protection legislation.',
+        's5.p2': 'It is important to note that this section does not imply that BAJANET carries out transfers related to sensitive data.',
+        's5.p3': 'If you disagree with the secondary purposes and/or the transfer of data, we invite you to send an email to <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>. Until we receive an email expressing your disagreement with the secondary purposes and/or the transfer of your personal data, we will understand that you agree with them.',
+        's6.h2': 'VI. ARCO Rights',
+        's6.p1': 'As a data subject, you have the right to exercise your ARCO Rights (Access, Rectification, Cancellation and Opposition) regarding the processing of your personal data. To do so, you may send your request directly to the "Data Protection" department via email: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's6.p2': 'Your request must include, at minimum, the following information:',
+        's6.li1': '(a) Your name and address, or any other means by which you can be notified of the response to your request.',
+        's6.li2': '(b) Documents confirming your identity or, if applicable, your legal representation.',
+        's6.li3': '(c) A clear and precise description of the personal data about which you wish to exercise any of the ARCO Rights.',
+        's6.li4': '(d) Any other details that may help locate the personal data.',
+        's6.li5': '(e) Your signature at the end of the request.',
+        's6.p3': 'Once the request has been submitted, the "Data Protection" department will respond within a maximum of <strong>20 business days</strong> from the date of receipt. If additional information and/or documentation is required, they will contact you within <strong>5 business days</strong>; you will have <strong>10 business days</strong> to address that requirement. Otherwise, your request will be considered as not submitted.',
+        's6.p4': 'Within the next <strong>15 business days</strong> following the above response, if your request is deemed valid, it will be carried out.',
+        's6.p5': 'If your request relates to the exercise of the right of access, your personal data will be made available through simple copies and/or electronic documents. Exercising ARCO Rights will be free of charge, as will reproduction in simple copy or delivery by email.',
+        's7.h2': 'VII. Revocation of Consent',
+        's7.p1': 'You, as the data subject, have the right to revoke your consent to the processing of your personal data by following the procedure described above and explicitly expressing your wish to revoke consent. However, it is important to keep in mind that in all cases, we may not be able to fulfill your request or cease using your data immediately due to possible legal obligations requiring continued processing of your personal data. Additionally, revoking your consent in certain situations may result in the termination of your relationship with us.',
+        's7.p2': 'For more information on the protection of your personal data, you may contact our "Data Protection" department using the contact information provided in this PRIVACY NOTICE. Revocation of consent will not incur any cost.',
+        's8.h2': 'VIII. Use or Disclosure of Personal Data',
+        's8.p1': 'BAJANET will use your personal data in accordance with the purposes set forth in this PRIVACY NOTICE and for the time necessary under applicable legal provisions. At any time, you may contact us through the means mentioned to seek clarification, resolve doubts, or submit suggestions related to your personal data.',
+        's8.p2': 'If you wish to stop receiving information or communications (limit use or disclosure) from us, you may contact us at: <a href="mailto:info@bajanet.mx">info@bajanet.mx</a>',
+        's9.h2': 'IX. Cookies and Web Beacons',
+        's9.p1': 'BAJANET uses cookies on its website. Cookies are text files stored on your computer\'s hard drive when you visit certain websites. They are used to identify whether you have previously visited the website and to help us identify features of the site that may be of interest to you.',
+        's9.p2': 'Most browsers are configured to accept cookies, and the help options in the toolbar of most browsers will tell you how to stop accepting new cookies, receive notifications about new cookies, and disable existing cookies. You can disable these mechanisms by following the instructions provided by your browser\'s owner.',
+        's9.p3': 'Our website may include links to third-party websites, and by accessing those sites, you leave our website, so we assume no responsibility with respect to those third-party websites. In addition, links to social media sites on our website mean that when you provide information or data on those sites, it may be viewed, accessed and processed by other people.',
+        's10.h2': 'X. Changes to This Privacy Notice',
+        's10.p1': 'Any changes or updates to this PRIVACY NOTICE will be communicated to you through our main website: <a href="https://www.bajanet.mx" target="_blank">www.bajanet.mx</a>. If you are reading a printed version, we recommend reviewing the Privacy Notice on our main website.',
+        's10.p2': 'By providing us with your personal data through any means, you, as the data subject, expressly acknowledge and accept this PRIVACY NOTICE. This consent grants us the authority to process your data in accordance with the provisions of this PRIVACY NOTICE and in compliance with personal data protection legislation, without prejudice to the rights granted by it. If you believe that your right to the protection of your personal data has been violated by our conduct or omission, you may contact us through the means provided.',
+        's10.note': '* It is important to note that BAJANET has no connection with the internal policies and personal data policies of the WhatsApp application.',
+        'footer.copy': '© 2025 BajaNet Comunicaciones · All rights reserved',
+        'footer.back': '← Back to home',
+      }
+    };
+
+    let lang = 'es';
+
+    function applyLang(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[l][key] !== undefined) el.textContent = t[l][key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[l][key] !== undefined) el.innerHTML = t[l][key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === l);
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+  </script>
 
 </body>
 </html>
